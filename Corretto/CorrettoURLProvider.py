@@ -5,10 +5,10 @@ import json
 from autopkglib import ProcessorError
 from autopkglib.URLGetter import URLGetter
 
-__all__ = ["CorrettoURLGetter"]
+__all__ = ["CorrettoURLProvider"]
 
 
-class CorrettoURLGetter(URLGetter):
+class CorrettoURLProvider(URLGetter):
     """
     Downloads the latest indexmap for all corretto releases, provides url and version of choosen
     major_version + architecture
@@ -60,5 +60,5 @@ class CorrettoURLGetter(URLGetter):
 
 
 if __name__ == "__main__":
-    PROCESSOR = CorrettoURLGetter()
+    PROCESSOR = CorrettoURLProvider()
     PROCESSOR.execute_shell()
