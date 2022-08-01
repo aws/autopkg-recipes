@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>Description</key>
+        <string>Installs the latest version of Wickr Enterprise</string>
+        <key>Identifier</key>
+        <string>com.amazon.aws.install.wickr.enterprise</string>
+        <key>Input</key>
+        <dict>
+            <key>NAME</key>
+            <string>Wickr Enterprise</string>
+            <key>api_type</key>
+            <string>Enterprise</string>
+        </dict>
+        <key>MinimumVersion</key>
+        <string>1.4.0</string>
+        <key>ParentRecipe</key>
+        <string>com.amazon.aws.pkg.wickr.enterprise</string>
+        <key>Process</key>
+        <array>
+            <dict>
+                <key>Arguments</key>
+                <dict>
+                    <key>pkg_path</key>
+                    <string>%pathname%</string>
+                </dict>
+                <key>Processor</key>
+                <string>Installer</string>
+            </dict>
+        </array>
+    </dict>
+</plist>
