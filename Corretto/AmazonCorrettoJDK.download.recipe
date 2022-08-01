@@ -28,7 +28,7 @@
                     <string>%MAJOR_VERSION%</string>
                 </dict>
                 <key>Processor</key>
-                <string>CorrettoURLGetter</string>
+                <string>CorrettoURLProvider</string>
             </dict>
             <dict>
                 <key>Processor</key>
