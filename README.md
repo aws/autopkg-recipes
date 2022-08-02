@@ -2,6 +2,10 @@
 
 Official recipes for AWS products for the AutoPkg Community
 
+To add this repository to your AutoPkg setup, run:
+
+    autopkg repo-add aws/autopkg-recipes
+
 ## Security
 
 See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more information.
