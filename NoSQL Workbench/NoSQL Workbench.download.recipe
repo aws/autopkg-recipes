@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>Description</key>
+        <string>Downloads the latest version of NoSQL Workbench.</string>
+        <key>Identifier</key>
+        <string>com.amazon.aws.download.NoSQLWorkbench</string>
+        <key>Input</key>
+        <dict>
+            <key>NAME</key>
+            <string>NoSQL Workbench</string>
+        </dict>
+        <key>MinimumVersion</key>
+        <string>1.0.0</string>
+        <key>Process</key>
+        <array>
+            <dict>
+                <key>Arguments</key>
+                <dict>
+                    <key>re_pattern</key>
+                    <string>https:.+.dmg(?!.sha)</string>
+                    <key>url</key>
+                    <string>https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/workbench.settingup.html</string>
+                </dict>
+                <key>Processor</key>
+                <string>URLTextSearcher</string>
+            </dict>
+            <dict>
+                <key>Arguments</key>
+                <dict>
+                    <key>find</key>
+                    <string>NoSQL Workbench</string>
+                    <key>input_string</key>
+                    <string>%match%</string>
+                    <key>replace</key>
+                    <string>NoSQL%20Workbench</string>
+                </dict>
+                <key>Processor</key>
+                <string>com.github.homebysix.FindAndReplace/FindAndReplace</string>
+            </dict>
+            <dict>
+                <key>Arguments</key>
+                <dict>
+                    <key>filename</key>
+                    <string>%NAME%.dmg</string>
+                    <key>url</key>
+                    <string>%output_string%</string>
+                </dict>
+                <key>Processor</key>
+                <string>URLDownloader</string>
+            </dict>
+            <dict>
+                <key>Processor</key>
+                <string>EndOfCheckPhase</string>
+            </dict>
+            <dict>
+                <key>Arguments</key>
+                <dict>
+                    <key>input_path</key>
+                    <string>%pathname%/NoSQL Workbench.app</string>
+                    <key>requirement</key>
+                    <string>identifier "com.dynamodb.workbench" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "94KV3E626L"</string>
+                </dict>
+                <key>Processor</key>
+                <string>CodeSignatureVerifier</string>
+            </dict>
+            <dict>
+                <key>Arguments</key>
+                <dict>
+                    <key>input_plist_path</key>
+                    <string>%pathname%/NoSQL Workbench.app/Contents/Info.plist</string>
+                    <key>plist_version_key</key>
+                    <string>CFBundleShortVersionString</string>
+                </dict>
+                <key>Processor</key>
+                <string>Versioner</string>
+            </dict>
+        </array>
+    </dict>
+</plist>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>Description</key>
+        <string>Installs the latest version of NoSQL Workbench.</string>
+        <key>Identifier</key>
+        <string>com.amazon.aws.install.NoSQLWorkbench</string>
+        <key>Input</key>
+        <dict>
+            <key>NAME</key>
+            <string>NoSQL Workbench</string>
+        </dict>
+        <key>MinimumVersion</key>
+        <string>1.0.0</string>
+        <key>ParentRecipe</key>
+        <string>com.amazon.aws.download.NoSQLWorkbench</string>
+        <key>Process</key>
+        <array>
+            <dict>
+                <key>Arguments</key>
+                <dict>
+                    <key>dmg_path</key>
+                    <string>%pathname%</string>
+                    <key>items_to_copy</key>
+                    <array>
+                        <dict>
+                            <key>destination_path</key>
+                            <string>/Applications</string>
+                            <key>source_item</key>
+                            <string>NoSQL Workbench.app</string>
+                        </dict>
+                    </array>
+                </dict>
+                <key>Processor</key>
+                <string>InstallFromDMG</string>
+            </dict>
+        </array>
+    </dict>
+</plist>
